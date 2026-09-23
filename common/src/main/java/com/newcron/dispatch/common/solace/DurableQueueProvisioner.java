@@ -1,6 +1,8 @@
 package com.newcron.dispatch.common.solace;
 
 import com.solacesystems.jcsmp.EndpointProperties;
+import com.solacesystems.jcsmp.JCSMPErrorResponseException;
+import com.solacesystems.jcsmp.JCSMPErrorResponseSubcodeEx;
 import com.solacesystems.jcsmp.JCSMPFactory;
 import com.solacesystems.jcsmp.JCSMPSession;
 import com.solacesystems.jcsmp.Queue;
@@ -27,7 +29,14 @@ public final class DurableQueueProvisioner {
         session.provision(queue, endpointProps, JCSMPSession.FLAG_IGNORE_ALREADY_EXISTS);
 
         Topic topic = JCSMPFactory.onlyInstance().createTopic(topicName);
-        session.addSubscription(queue, topic, JCSMPSession.WAIT_FOR_CONFIRM);
+        try {
+            session.addSubscription(queue, topic, JCSMPSession.WAIT_FOR_CONFIRM);
+        } catch (JCSMPErrorResponseException e) {
+            // Si ya existía la suscripción (de una ejecución anterior), no es un error real.
+            if (e.getSubcodeEx() != JCSMPErrorResponseSubcodeEx.SUBSCRIPTION_ALREADY_PRESENT) {
+                throw e;
+            }
+        }
 
         return queue;
     }
