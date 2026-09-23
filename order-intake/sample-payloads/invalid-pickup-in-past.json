@@ -1,0 +1,14 @@
+{
+  "shipperOrderId": "7743789",
+  "pickupDate": "2026-09-20",
+  "deliveryDate": "2026-09-26",
+  "price": 750,
+  "stops": [
+    { "stopNumber": 1, "city": "Dallas", "state": "TX", "postalCode": "75201" },
+    { "stopNumber": 2, "city": "Houston", "state": "TX", "postalCode": "77002" }
+  ],
+  "vehicles": [
+    { "year": "2015", "make": "Honda", "model": "Civic" }
+  ],
+  "transportationReleaseNotes": "Verify the pickup date; shipments cannot be delivered after 3:00 p.m. on the current date or on previous days."
+}

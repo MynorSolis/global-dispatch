@@ -1,0 +1,14 @@
+{
+  "shipperOrderId": "7743790",
+  "pickupDate": "2026-09-25",
+  "deliveryDate": "2026-09-25",
+  "price": 600,
+  "stops": [
+    { "stopNumber": 1, "city": "Reno", "state": "NV", "postalCode": "89501" },
+    { "stopNumber": 2, "city": "Sacramento", "state": "CA", "postalCode": "95814" }
+  ],
+  "vehicles": [
+    { "year": "2018", "make": "Ford", "model": "Focus" }
+  ],
+  "transportationReleaseNotes": "Verify the pickup date; shipments cannot be delivered after 3:00 p.m. on the current date or on previous days."
+}
